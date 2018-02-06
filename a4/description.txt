@@ -1,0 +1,36 @@
+Product idea :
+
+- Goal of this project is to create a Clustering and Classification Model.
+- Collect data (tweets) on some keyword topic and do some semantic analysis.
+- Analyse social network and trend using twitter data.
+- Collecting the tweets based on a keywork which is most trending.
+- I collected tweets on "Demonetisation", which is the most trending topic on social media in India during the month of November in India. 
+
+- Demonetisation : On 8 November 2016, the Government of India announced the demonetisation of all ₹500 (US$7.80) and ₹1,000 (US$16) banknotes of the Mahatma Gandhi Series. The government claimed that the action would curtail the shadow economy and crack down on the use of illicit and counterfeit cash to fund illegal activity and terrorism.The sudden nature of the announcement and the prolonged cash shortages in the weeks that followed created significant disruption throughout the economy, threatening economic output.
+More information can be find here https://en.wikipedia.org/wiki/2016_Indian_banknote_demonetisation.
+
+- An year has passed since the demonetisation was announced in India and we got lots of fixed reviews and judgement of people on the act of demonetisation. Some people favoured or liked it and same people didn't that's why I decided to pick this keyword "demonetisation" to collect data from twitter and do the semantic analysis.
+
+The entire assignment 4 (or project) is divided into 4 parts, as follows:
+
+collect.py:[takes 8 hours because of 15 mins time windows i.e. rate limit of twitter API]
+
+This file's purpose is to collect data using Twitter's REST API to search tweets, I have collected 300 tweets on keyword ("demonetisation") by filtering out the re-tweets in order to have a unique tweets. The 300 tweets have been collected over a period of 11th, 12th and 13th November resulting in 100 tweets per day (Demonetisation anniversary is 8 November). Once the tweets have been collected its stored in one tweets.pkl file. Now after that the tweets information is used to find the friends list of each of the screen_name of user, there by collecting friends of all 300 tweets user's friends (5000 friends per screen name) and stored in data.pkl.I have used Afinn data which provides the prelabled words as negative and positive polarity to perform classification based on sentiment of tweets. Its fetched and stored negative in neg.txt and positive in pos.txt as done in assignment.
+
+cluster.py:
+
+This file find and compute the communities based on smililariy of users. I have read the tweets from tweets.pkl file generated above and each tweet user's friends from data.pkl file to perform clustering. To find communities I have created a graph nodes with all user's edges between nodes are generated based on jaccard similarity concept such that two user will have an edge between them if they have a common friends with jacard simlilarity coef value greater than 0.005. After the creation of the graph I have kept only those nodes which has a degree greater than 1 and removed rest for making it more densed. Now to perform clustering I have used the grivan newman algorithm by finding the connected components based on maximum centrality. After the creation of the cluster components based on communities I have writter that inti communities.pkl file.
+
+classify.py:
+
+This file use machine learning classification techniques to classify tweets based on positive and negative sentiments. I have created a classification model LogisticRegression() which is trained using the labeled data fetched from http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip location. The Model is trained using token pair features which takes a combination of pairs of closest word in the context, also model is trained using lexicon features based on negative and positive words collected via Afinn. After the training of model the collected tweets of 300 users is used as a test data to perdict the sentiment, the analysis takes time to compute as training a model on large train data to have an efficient output of classification. After the prediction on tweets as a test data the necessary information is written in the classification.pkl file i.e. number of positive and negative tweets and the tweets itself, to be used in summarize.py.
+
+summarize.py
+
+This file summarize the important factors in this assignment or project, it creates summary.txt file which has information read from different files we have stored in above stages.
+
+
+Important note:
+
+All the files (.py, .pkl, data folder of AFFIN data)including the data folder in to the same location.
+Execute each .py files in order(collect.py,cluster.py,classify.py,summarize.py) to have a correct output.

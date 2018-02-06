@@ -1,0 +1,92 @@
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+A. It totally depends on what area of interest we are looking for qunantifying the 
+similarity of two users. For example, Jill Stein and Gary Johnson can be are 
+more similar in terms of the sports interest if both of them follow the same 
+sports and same sport's players while they may not follow the same political 
+members and ministers of states making them totally dissimilar interms of 
+political interest. On the other hand Hillary Clinton and Donald Trump can 
+be more similar in some different area of interests. Hence this approach is misleading.
+Having the interest defined and try to use the function friend_overlap for a 
+specific analysis of interest or area may be used to use this function with 
+more value. This can be one possible way to fix the issue discussed above.
+
+
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+
+A. WhiteHouse is followed by both Hilary Clinton and Donald Trump which 
+kind of make sense as both of them ran for the president position and thus 
+for this reason both are rivals as well. According to the Wikipedia The White House 
+is the official residence and workplace of the President of the United States, 
+located at 1600 Pennsylvania Avenue NW in Washington, D.C thus people running 
+for the position would more likely to follow WhiteHouse on Twitter.
+
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+
+A. It actually depends on a personal choice and interest, Donald Trump might 
+have a narrowed and focused interest and because of this reason he don't 
+follow many people on the other hand Gary Johnson follows a huge number of 
+Twitter IDs which shows that Gary Johnson wants notification from more people 
+from different walks of life compared to Donald Trump who might not be interested 
+in getting notification from different walks of life. The big difference in how many 
+accounts each candidate follows actually help in our analysis as if everyone follow 
+almost everyone then it would be hard to find out differences between the candidates. 
+We learn more about a person who as narrowed and focused interest than a person who 
+follow almost everyone. In the above case where Gary Johnson follows over 3K accounts, 
+while Donald Trump follows less than 50 we get insight on how different this two 
+candidates are and they have different interests.
+
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+According to the data collected in this assignment :-
+
+Rate limit for GET friends/ids is 15 per window(15 mins)
+Rate limit for GET users/lookup is 900 per window(15mins)
+
+We have 4 candidates, each have following friends :
+Friends per candidate:
+DrJillStein   1645
+GovGaryJohnson   3482
+HillaryClinton   762
+realDonaldTrump   45
+
+If we collect all the users that the friends of the 4 candidates follow 
+then it will require following number of twitter request using API call
+https://dev.twitter.com/rest/reference/get/friends/ids
+
+(1645+1)+(3482+1)+(762+1)+(45+1) requests needed to be made including 
+one for each candidates as well.
+Which is equal to 5938 requests.
+
+Since in one window only 15 request can be made, 
+(5938/15) windows of 15 mins will be required, hence 365.9 approx(366) windows. 
+Which gives us 366*15 mins or 5490 mins or approximately 91.5 hours 
+waiting time in total. This many minutes will be taken to collect the data asked.
+
+
+

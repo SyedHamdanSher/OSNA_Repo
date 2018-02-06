@@ -1,0 +1,16 @@
+Number of users collected:252
+Number of messages collected:300
+Number of communities discovered:8
+Average number of users per community:29.375
+Number of instances per class found:
+
+Number of positive instances per class: 102
+Number of negative instances per class: 197
+According to the analysis done on tweets collected more number of people didn't like DEMONITIZATION
+
+One example from each class:
+
+Positive Class Example:
+@DKSHARMA358 @IndiaToday @aajtak The demonetization came when we brought out house it was nightmare for us the regi https://t.co/rZLEw6bGdq
+Negative Class Example:
+We've seen it here, on facebook, on Youtube with the demonetization and with restricted mode
